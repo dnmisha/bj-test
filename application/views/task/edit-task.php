@@ -51,7 +51,7 @@ use Mvc\Application\Models\Task;
                             </div>
                         </div>
                         <div id="preview" class="pull-left">
-                            <img src="/<?=htmlspecialchars($task->image);?>" data-url="" alt="">
+                            <img src="<?=htmlspecialchars($task->image);?>" data-url="" alt="">
                         </div>
                     </div>
                 </div>

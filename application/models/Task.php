@@ -88,6 +88,7 @@ class Task extends BaseModel
             unset($_SESSION['lastImageUpload']);
         }
         $task->status = Task::STATUS_NEW;
+        $task->text = preg_replace('/\s+?(\S+)?$/', '', substr($task->text, 0, 2000));;
         $task->save();
         return $task;
     }

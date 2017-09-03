@@ -55,7 +55,7 @@ use Mvc\Application\Models\User;
                     <td><?= htmlspecialchars($task->user_name);?></td>
                     <td><?= htmlspecialchars($task->email);?></td>
                     <td><?= htmlspecialchars($task->text);?></td>
-                    <td><img src="/<?=$task->image?>" alt="<?= htmlspecialchars($task->user_name);?>"></td>
+                    <td><img src="<?=$task->image?>" alt="<?= htmlspecialchars($task->user_name);?>"></td>
                     <td><?= Task::getStatusName((int)$task->status);?></td>
                     <?php if(User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
                       <td><a href="/task/edit/<?= $task->id;?>">редактировать</a></td>

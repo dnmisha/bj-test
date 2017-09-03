@@ -33,7 +33,7 @@ class ImageController extends BaseController
                 $results= $upload->save($filename);
                 $path = CoreHelper::baseUrl(true) . '/' . $results['path'];
                 ImageResize::resizeImage($results['full_path'], '320x240', $results['full_path'], true);
-                $_SESSION['lastImageUpload'] = $results['path'];
+                $_SESSION['lastImageUpload'] = '/'.$results['path'];
                 unset($results['full_path']);
                 $results['path'] = $path;
                 echo json_encode($results);
