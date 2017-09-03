@@ -24,13 +24,13 @@ use Mvc\Application\Models\User;
                     Статус
                     <select name="filter_value" id="statusFilter">
                         <option value="-"></option>
-                        <?php foreach ( Task::getStatusName() as $key=>$option): ?>
-                            <option value="<?=$option;?>"><?=$option;?></option>
+                        <?php foreach (Task::getStatusName() as $key => $option): ?>
+                            <option value="<?= $option; ?>"><?= $option; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </th>
-                <?php if(User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
-                    <th> </th>
+                <?php if (User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
+                    <th></th>
                 <?php endif; ?>
             </tr>
             </thead>
@@ -43,22 +43,22 @@ use Mvc\Application\Models\User;
                 <th>Изображение</th>
                 <th>
                 </th>
-                <?php if(User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
-                    <th> </th>
+                <?php if (User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
+                    <th></th>
                 <?php endif; ?>
             </tr>
             </tfoot>
             <tbody>
             <?php foreach ($tasks as $task): ?>
                 <tr>
-                    <td><?= $task->id;?></td>
-                    <td><?= htmlspecialchars($task->user_name);?></td>
-                    <td><?= htmlspecialchars($task->email);?></td>
-                    <td><?= htmlspecialchars($task->text);?></td>
-                    <td><img src="<?=$task->image?>" alt=""></td>
-                    <td><?= Task::getStatusName((int)$task->status);?></td>
-                    <?php if(User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
-                      <td><a href="/task/edit/<?= $task->id;?>">редактировать</a></td>
+                    <td><?= $task->id; ?></td>
+                    <td><?= htmlspecialchars($task->user_name); ?></td>
+                    <td><?= htmlspecialchars($task->email); ?></td>
+                    <td><?= htmlspecialchars($task->text); ?></td>
+                    <td><img src="<?= $task->image ?>" alt=""></td>
+                    <td><?= Task::getStatusName((int)$task->status); ?></td>
+                    <?php if (User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
+                        <td><a href="/task/edit/<?= $task->id; ?>">редактировать</a></td>
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>

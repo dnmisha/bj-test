@@ -76,14 +76,15 @@ class CoreHelper
      * @param bool $absolute
      * @return string
      */
-    public static function baseUrl($absolute = false){
-        if($absolute == true){
+    public static function baseUrl($absolute = false)
+    {
+        if ($absolute == true) {
             return sprintf(
                 "%s://%s",
                 isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
                 $_SERVER['SERVER_NAME']
             );
-        }else{
+        } else {
             return '/';
         }
     }

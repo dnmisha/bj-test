@@ -5,7 +5,9 @@
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
+.row.content {
+    height: 450px
+}
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -27,10 +29,13 @@ footer {
         height: auto;
         padding: 15px;
     }
-    .row.content {height:auto;}
+
+    .row.content {
+        height: auto;
+    }
 }
 
-.form-wrap{
+.form-wrap {
     max-width: 500px;
     padding: 30px;
     background: #f1f1f1;
@@ -38,16 +43,20 @@ footer {
     border-radius: 4px;
     text-align: center;
 }
-.form-wrap form{
+
+.form-wrap form {
     border-bottom: 1px dotted #ddd;
     padding: 10px;
 }
-.form-wrap #output{
+
+.form-wrap #output {
     margin: 10px 0;
 }
-.form-wrap .error{
+
+.form-wrap .error {
     color: #d60000;
 }
+
 .form-wrap .images {
     width: 100%;
     display: block;
@@ -55,20 +64,24 @@ footer {
     padding: 5px;
     margin: 5px 0;
 }
+
 .form-wrap .thumbnails {
     width: 32%;
     display: inline-block;
     margin: 3px;
 }
+
 .preview-table {
     width: 100%;
 
 }
-table{
+
+table {
     border-collapse: collapse !important;
 }
- #taskTable td, .preview-table td{
-     padding: 3px;
-     border: 1px solid #dadada;
 
- }
+#taskTable td, .preview-table td {
+    padding: 3px;
+    border: 1px solid #dadada;
+
+}

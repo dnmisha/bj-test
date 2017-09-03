@@ -14,11 +14,11 @@ class UserController extends BaseController
      */
     public function actionLogin()
     {
-        if(MvcKernel::$app->user == null){
-            if(MvcKernel::$app->request->isPost()){
+        if (MvcKernel::$app->user == null) {
+            if (MvcKernel::$app->request->isPost()) {
                 $user = User::signin(MvcKernel::$app->request->post());
-                if(array_key_exists('error',$user)){
-                    return $this->render('login',['error'=>$user['error']]);
+                if (array_key_exists('error', $user)) {
+                    return $this->render('login', ['error' => $user['error']]);
                 }
                 MvcKernel::$app->request->redirect('/');
             }
@@ -26,6 +26,7 @@ class UserController extends BaseController
         }
         MvcKernel::$app->request->redirect('/');
     }
+
     /**
      * @return string
      */

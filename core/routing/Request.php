@@ -16,11 +16,12 @@ class Request
     /**
      * @return $this
      */
-    public function init(){
-        if($this->isPost()){
+    public function init()
+    {
+        if ($this->isPost()) {
             $this->postData = $_POST;
         }
-        if($this->isGet()){
+        if ($this->isGet()) {
             $this->postData = $_GET;
         }
         return $this;
@@ -29,13 +30,16 @@ class Request
     /**
      * @return bool
      */
-    public function isPost(){
+    public function isPost()
+    {
         return ($_SERVER['REQUEST_METHOD'] === 'POST');
     }
+
     /**
      * @return bool
      */
-    public function isGet(){
+    public function isGet()
+    {
         return ($_SERVER['REQUEST_METHOD'] === 'GET');
     }
 
@@ -44,9 +48,10 @@ class Request
      * @param null $defaultValue
      * @return array|mixed|null
      */
-    public function post($variableName = null,$defaultValue = null){
-        if($variableName !== null){
-            if(array_key_exists($variableName,$this->postData)){
+    public function post($variableName = null, $defaultValue = null)
+    {
+        if ($variableName !== null) {
+            if (array_key_exists($variableName, $this->postData)) {
                 return $this->postData[$variableName];
             }
             return $defaultValue;
@@ -54,7 +59,8 @@ class Request
         return $this->postData;
     }
 
-    public function redirect($url){
+    public function redirect($url)
+    {
         header("Location:$url");
     }
 }

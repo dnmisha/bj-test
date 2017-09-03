@@ -82,7 +82,9 @@ class MvcKernel
     /**
      *
      */
-    public function beforeAction(){ }
+    public function beforeAction()
+    {
+    }
 
     /**
      * @throws BaseException
@@ -133,7 +135,7 @@ class MvcKernel
                             }
                         }
                         $name = str_replace('.php', '', $file);
-                        self::$classMap[$namespace.'/'.ucfirst($name)] = $directory . self::$ds . $name;
+                        self::$classMap[$namespace . '/' . ucfirst($name)] = $directory . self::$ds . $name;
                     }
                 }
             }
@@ -171,7 +173,8 @@ class MvcKernel
         return isset($this->config['assets']) ? $this->config['assets'] : [];
     }
 
-    public function getDb(){
+    public function getDb()
+    {
         return $this->db;
     }
 }

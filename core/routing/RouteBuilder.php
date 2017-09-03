@@ -64,8 +64,8 @@ class RouteBuilder
     public function buildRoute()
     {
 
-        foreach ( $this->config as $key=> $item){
-            if (preg_match($this->regexPath($key),$this->currentPattern)) {
+        foreach ($this->config as $key => $item) {
+            if (preg_match($this->regexPath($key), $this->currentPattern)) {
                 $route = $this->config[$key];
                 if (array_key_exists('controller', $route) && !empty($route['controller'])) {
                     $appRoute = explode(':', $route['controller']);
@@ -97,12 +97,13 @@ class RouteBuilder
      * @param $item
      * @return array
      */
-    public function parseParams($url, $item){
-        $parts = explode('/',$url);
+    public function parseParams($url, $item)
+    {
+        $parts = explode('/', $url);
         $params = [];
-        if(array_key_exists('params',$item)){
-            foreach ($item['params'] as $key=>$param){
-                $params[$key]=array_key_exists($param,$parts)?$parts[$param]:null;
+        if (array_key_exists('params', $item)) {
+            foreach ($item['params'] as $key => $param) {
+                $params[$key] = array_key_exists($param, $parts) ? $parts[$param] : null;
             }
         }
         return $params;

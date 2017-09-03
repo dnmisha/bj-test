@@ -30,10 +30,10 @@ class ImageController extends BaseController
             $filename = uniqid() . '.' . pathinfo($_FILES['imageUpload']['name'], PATHINFO_EXTENSION);
             $upload->set_allowed_mime_types(['image/gif', 'image/jpeg', 'image/png']);
             if ($upload->check()) {
-                $results= $upload->save($filename);
+                $results = $upload->save($filename);
                 $path = CoreHelper::baseUrl(true) . '/' . $results['path'];
                 ImageResize::resizeImage($results['full_path'], '320x240', $results['full_path'], true);
-                $_SESSION['lastImageUpload'] = '/'.$results['path'];
+                $_SESSION['lastImageUpload'] = '/' . $results['path'];
                 unset($results['full_path']);
                 $results['path'] = $path;
                 echo json_encode($results);

@@ -2,10 +2,10 @@
  * Created by misha on 02.09.17.
  */
 var skipSubmit = false;
-$(document).ready(function() {
+$(document).ready(function () {
     table = $('#taskTable').DataTable({
         "pageLength": 3,
-        "order": [[ 0, "desc" ]],
+        "order": [[0, "desc"]],
         "language": {
             "processing": "Подождите...",
             "search": "Поиск:",
@@ -30,22 +30,22 @@ $(document).ready(function() {
         }
     });
 
-    table.columns().every( function () {
+    table.columns().every(function () {
         var that = this;
-        $('#statusFilter').on( 'change', function () {
-            if ( that.search() !== this.value ) {
-                that.column(5).search( this.value, true, false).draw();
+        $('#statusFilter').on('change', function () {
+            if (that.search() !== this.value) {
+                that.column(5).search(this.value, true, false).draw();
             }
-        } );
-    } );
+        });
+    });
 
     $('#fileupload').fileupload({
         dataType: 'json',
         done: function (e, data) {
-            if(data.result.error){
-               alert(data.result.error);
-            }else{
-                $('#preview img').attr('src',data.result.path)
+            if (data.result.error) {
+                alert(data.result.error);
+            } else {
+                $('#preview img').attr('src', data.result.path)
                 $('#hiddenImage').val(data.result.path)
             }
         },
@@ -56,15 +56,14 @@ $(document).ready(function() {
         imageMaxHeight: 400,
         imageCrop: true // Force cropped images
     });
-} );
+});
 /**
- *
  * @param my_form_id
  */
 function previewTask() {
-    $("#formNewTask").submit(function(event){
-        if(skipSubmit == false){
-            if($("#formNewTask")[0].checkValidity() == true){
+    $("#formNewTask").submit(function (event) {
+        if (skipSubmit == false) {
+            if ($("#formNewTask")[0].checkValidity() == true) {
                 $("#previewTask .modal-body").html('');
                 var table = $('<table></table>').addClass('preview-table');
                 row = $('<tr><td>Имя</td><td>email</td><td>Текст</td><td>Картинка</td></tr>');
@@ -72,7 +71,7 @@ function previewTask() {
                 var name = $('<td></td>').text($('#user_name').val());
                 var email = $('<td></td>').text($('#email').val());
                 var text = $('<td></td>').text($('#text').val());
-                var image = $('<td></td>').append($('<img id="">').attr('src',$('#preview img').attr('src')));
+                var image = $('<td></td>').append($('<img id="">').attr('src', $('#preview img').attr('src')));
                 var row = $('<tr></tr>');
                 row.append(name);
                 row.append(email);
@@ -80,7 +79,7 @@ function previewTask() {
                 row.append(image);
                 table.append(row);
                 table.append(row);
-                $("#previewTask .modal-body").append(table) ;
+                $("#previewTask .modal-body").append(table);
                 $('#previewTaskTrigger').click();
             }
             event.preventDefault();

@@ -11,13 +11,13 @@ use Mvc\Application\Models\User;
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><?=MvcKernel::$app->getAppName();?></a>
+            <a class="navbar-brand" href="/"><?= MvcKernel::$app->getAppName(); ?></a>
         </div>
         <ul class="nav navbar-nav pull-right">
-            <?php if(!User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
+            <?php if (!User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
                 <li><a href="/login">Login</a></li>
             <?php else: ?>
-                <li><a href="javascript:void(0)"><?=\Mvc\Core\MvcKernel::$app->user->login;?></a></li>
+                <li><a href="javascript:void(0)"><?= \Mvc\Core\MvcKernel::$app->user->login; ?></a></li>
             <?php endif; ?>
 
         </ul>

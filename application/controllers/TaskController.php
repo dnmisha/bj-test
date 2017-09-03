@@ -19,8 +19,11 @@ class TaskController extends BaseController
      */
     public function actionAdd()
     {
-        if(MvcKernel::$app->request->isPost()){
-            Task::createNewTask(MvcKernel::$app->request->post());
+        if (MvcKernel::$app->request->isPost()) {
+            $task = Task::createNewTask(MvcKernel::$app->request->post());
+            if (is_array($task) && isset($task['error'])) {
+                return $this->render('new-task', ['error' => $task['error']]);
+            }
             MvcKernel::$app->request->redirect('/');
         }
         return $this->render('new-task');
@@ -28,16 +31,16 @@ class TaskController extends BaseController
 
     public function actionEdit($id = null)
     {
-        if(is_numeric($id) && MvcKernel::$app->user && User::isAdmin(MvcKernel::$app->user)){
-            $task = Task::find('task')->getRecord('*','WHERE id = :id',['id'=>(int)$id])->one();
-            if(!$task) throw new BaseException('Task not found',404);
-            if(MvcKernel::$app->request->isPost()){
-                Task::updateTask(MvcKernel::$app->request->post(),$id);
-                MvcKernel::$app->request->redirect('/task/edit/'.(int)$id);
+        if (is_numeric($id) && MvcKernel::$app->user && User::isAdmin(MvcKernel::$app->user)) {
+            $task = Task::find('task')->getRecord('*', 'WHERE id = :id', ['id' => (int)$id])->one();
+            if (!$task) throw new BaseException('Task not found', 404);
+            if (MvcKernel::$app->request->isPost()) {
+                Task::updateTask(MvcKernel::$app->request->post(), $id);
+                MvcKernel::$app->request->redirect('/task/edit/' . (int)$id);
             }
-            $task = Task::find('task')->getRecord('*','WHERE id = :id',['id'=>(int)$id])->one();
+            $task = Task::find('task')->getRecord('*', 'WHERE id = :id', ['id' => (int)$id])->one();
             return $this->render('edit-task', compact('task'));
         }
-        throw new BaseException('Access denied',403);
+        throw new BaseException('Access denied', 403);
     }
 }

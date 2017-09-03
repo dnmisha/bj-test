@@ -19,7 +19,7 @@ class MainController extends BaseController
      */
     public function actionIndex()
     {
-        $tasks = BaseModel::find('task')->getRecord('*','ORDER BY id DESC')->all();
+        $tasks = BaseModel::find('task')->getRecord('*', 'ORDER BY id DESC')->all();
         return $this->render('index', compact('tasks'));
     }
 

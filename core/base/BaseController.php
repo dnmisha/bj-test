@@ -26,6 +26,7 @@ class BaseController
 
     public $layout = 'main';
     private $params = null;
+
     /**
      * BaseController constructor.
      * @param $actionName
@@ -58,10 +59,10 @@ class BaseController
     public function runAction()
     {
         $actionName = $this->getMethodActionName();
-        if(!empty($this->params)){
-            return call_user_func_array([$this,$actionName],$this->params);
+        if (!empty($this->params)) {
+            return call_user_func_array([$this, $actionName], $this->params);
         }
-        return call_user_func([$this,$actionName]);
+        return call_user_func([$this, $actionName]);
     }
 
     /**

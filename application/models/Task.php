@@ -78,33 +78,40 @@ class Task extends BaseModel
 
     /**
      * @param $data
-     * @return Task
+     * @return mixed
      */
-    public static function createNewTask($data){
+    public static function createNewTask($data)
+    {
         $task = new Task();
         $task->loadData($data);
-        if(isset($_SESSION['lastImageUpload'])){
+        if (isset($_SESSION['lastImageUpload'])) {
             $task->image = $_SESSION['lastImageUpload'];
             unset($_SESSION['lastImageUpload']);
         }
         $task->status = Task::STATUS_NEW;
         $task->text = preg_replace('/\s+?(\S+)?$/', '', substr($task->text, 0, 2000));;
-        $task->save();
-        return $task;
+        if (!empty($task->text) && !empty($task->user_name) && !empty($task->email)) {
+            $task->save();
+            return $task;
+        } else {
+            return ['error' => 'Ошибка валидации полей, все поля обязательны'];
+        }
+
     }
 
     /**
      * @param $data
      * @param $taskId
      */
-    public static function updateTask($data,$taskId){
+    public static function updateTask($data, $taskId)
+    {
         $taskModel = new Task();
         $taskModel->loadData($data);
-        if(isset($_SESSION['lastImageUpload'])){
+        if (isset($_SESSION['lastImageUpload'])) {
             $taskModel->image = $_SESSION['lastImageUpload'];
             unset($_SESSION['lastImageUpload']);
         }
-        $taskModel->update(' WHERE id = '.(int)$taskId);
+        $taskModel->update(' WHERE id = ' . (int)$taskId);
     }
 
 }

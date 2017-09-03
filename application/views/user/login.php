@@ -6,9 +6,9 @@
  * Time: 13:31
  */
 ?>
-<?php if(isset($error)): ?>
+<?php if (isset($error)): ?>
     <div class="alert alert-warning">
-      <?=$error;?>
+        <?= $error; ?>
     </div>
 <?php endif; ?>
 
@@ -16,7 +16,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="email">login:</label>
         <div class="col-sm-10">
-            <input type="text" name="login" class="form-control" required  placeholder="Enter login">
+            <input type="text" name="login" class="form-control" required placeholder="Enter login">
         </div>
     </div>
     <div class="form-group">
