@@ -29,6 +29,8 @@ class TaskController extends BaseController
     public function actionEdit($id = null)
     {
         if(is_numeric($id) && MvcKernel::$app->user && User::isAdmin(MvcKernel::$app->user)){
+            $task = Task::find('task')->getRecord('*','WHERE id = :id',['id'=>(int)$id])->one();
+            if(!$task) throw new BaseException('Task not found',404);
             if(MvcKernel::$app->request->isPost()){
                 Task::updateTask(MvcKernel::$app->request->post(),$id);
                 MvcKernel::$app->request->redirect('/task/edit/'.(int)$id);
