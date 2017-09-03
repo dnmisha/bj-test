@@ -3,9 +3,14 @@ assets:
     js:
         - 'js/jquery-3.1.1.min.js'
         - 'js/bootstrap.min.js'
+        - 'js/datatables.min.js'
+        - 'js/jquery.ui.widget.js'
+        - 'js/jquery.iframe-transport.js'
+        - 'js/jquery.fileupload.js'
         - 'js/custom.js'
     css:
         - 'css/bootstrap.min.css'
         - 'css/bootstrap-grid.css'
         - 'css/bootstrap-reboot.css'
+        - 'css/datatables.min.css'
         - 'css/custom.css'

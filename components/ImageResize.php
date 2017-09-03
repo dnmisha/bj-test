@@ -33,8 +33,7 @@ class ImageResize
         $output = 'file',
         $delete_original = true,
         $use_linux_commands = false,
-        $quality = 70,
-        $grayscale = false
+        $quality = 70
     )
     {
         $string = @file_get_contents($path);
@@ -45,17 +44,14 @@ class ImageResize
         $height = $parseSize['height'];
         $width = $parseSize['width'];
 
-
         if ($height <= 0 && $width <= 0) return false;
         if ($file === null && $string === null) return false;
 
         # Setting defaults and meta
         $info = $file !== null ? getimagesize($file) : getimagesizefromstring($string);
-        $image = '';
-        $final_width = 0;
-        $final_height = 0;
         list($width_old, $height_old) = $info;
         $cropHeight = $cropWidth = 0;
+
         # Calculating proportionality
         if ($proportional) {
             if ($width == 0) $factor = $height / $height_old;
@@ -73,6 +69,7 @@ class ImageResize
             $cropWidth = ($width_old - $width * $x) / 2;
             $cropHeight = ($height_old - $height * $x) / 2;
         }
+
         # Loading image to memory according to type
         switch ($info[2]) {
             case IMAGETYPE_JPEG:
@@ -86,11 +83,6 @@ class ImageResize
                 break;
             default:
                 return false;
-        }
-
-        # Making the image grayscale, if needed
-        if ($grayscale) {
-            imagefilter($image, IMG_FILTER_GRAYSCALE);
         }
 
         # This is the resizing/resampling/transparency-preserving magic

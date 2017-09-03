@@ -3,5 +3,13 @@ routes:
             controller: main:index
       '/demo':
             controller: main:demo
+      '/task/add':
+                  controller: task:add
+      '/task/edit/:int:':
+                  controller: task:edit
+                  params:
+                          id: 3
       '/login':
             controller: user:login
+      '/image/task-image-upload':
+            controller: image:taskImageUpload

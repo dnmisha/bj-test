@@ -2,7 +2,9 @@
 
 namespace Mvc\Application\Controllers;
 
+use Mvc\Application\Models\Task;
 use Mvc\Core\Base\BaseController;
+use Mvc\Core\Base\BaseModel;
 
 /**
  * Created by PhpStorm.
@@ -17,7 +19,8 @@ class MainController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index', ['rw' => 'wd']);
+        $tasks = BaseModel::find('task')->getRecord('*','ORDER BY id DESC')->all();
+        return $this->render('index', compact('tasks'));
     }
 
     /**

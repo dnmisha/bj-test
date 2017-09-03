@@ -6,17 +6,23 @@
  * Time: 13:31
  */
 ?>
-<form type="post" class="form-horizontal">
+<?php if(isset($error)): ?>
+    <div class="alert alert-warning">
+      <?=$error;?>
+    </div>
+<?php endif; ?>
+
+<form id="userLoginForm" method="post" class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-sm-2" for="email">login:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" required  placeholder="Enter login">
+            <input type="text" name="login" class="form-control" required  placeholder="Enter login">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="pwd">Password:</label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" required id="pwd" placeholder="Enter password">
+            <input type="password" name="password" class="form-control" required id="pwd" placeholder="Enter password">
         </div>
     </div>
 
