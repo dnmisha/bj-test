@@ -16,6 +16,8 @@ use Mvc\Application\Models\User;
         <ul class="nav navbar-nav pull-right">
             <?php if(!User::isAdmin(\Mvc\Core\MvcKernel::$app->user)): ?>
                 <li><a href="/login">Login</a></li>
+            <?php else: ?>
+                <li><a href="javascript:void(0)"><?=\Mvc\Core\MvcKernel::$app->user->login;?></a></li>
             <?php endif; ?>
 
         </ul>
