@@ -2,3 +2,4 @@
 vendor/
 /dayside/
 /config/common-local.yaml
+/web/files/
